@@ -1,0 +1,18 @@
+#Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+
+# C extensions
+*.so
+
+
+
+#DB
+db.sqlite3
+
+#rcs_contributions/migrations
+#stress_sensitivity/migrations
+#rcs_optimization/migrations
+
