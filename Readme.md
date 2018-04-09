@@ -19,6 +19,12 @@ $ source .env/bin/activate
 $ pip install django
 
 ```
+## Crear BD
+```
+python manage.py makemigrations
+python manage.py migrate
+```
+
 
 ## Ejucutar
 ```
