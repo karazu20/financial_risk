@@ -19,7 +19,8 @@ from django.contrib.auth.views import login, logout_then_login
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^financial_risk/portal/', include('portal.urls', namespace='portal')),    
+    url(r'^financial_risk/portal/', include('portal.urls', namespace='portal')),
+    url(r'^financial_risk/rcs_contributions/', include('rcs_contributions.urls', namespace='rcs_contributions')),    
     url(r'^$', login, {'template_name':'portal/login.html'}, name='login'),
     url(r'^logout/', logout_then_login, name='logout'),  
 ]
