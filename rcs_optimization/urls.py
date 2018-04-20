@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from rcs_contributions.views import *
+from rcs_optimization.views import *
 
 
 

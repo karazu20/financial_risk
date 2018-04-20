@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from rcs_contributions.views import *
+from stress_sensitivity.views import *
 
 
 

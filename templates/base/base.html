@@ -35,14 +35,24 @@
                     <li><a href="{% url 'logout' %}" >Salir</a></li>
                     <li><a href="#" >Contacto</a></li>
         </ul>
+
+        <ul id="rcs" class="dropdown-content">                        
+                    <li><a href="{% url 'rcs_contributions:main' %}" >Análisis</a></li>
+                    <li><a href="#">Resultados</a></li>                        
+        </ul>
+
         <nav>
         <div class="nav-wrapper teal">
-                <a href="{% url 'portal:index' %}" class="brand-logo center" ><img  src="{% static 'img/opus.png' %}"></a>
-            <ul  class="left hide-on-med-and-down">                                
-                <li><a href="{% url 'rcs_contributions:index' %}" >RCS</a></li>
-                <li><a href="#" >Estres y Sensibilidad</a></li>
-                <li><a href="#" >RCS Optimizado</a></li>
-            </ul>    
+                
+                <a href="{% url 'portal:index' %}" class="brand-logo center" ><img  src="{% static 'img/risk.png' %}"></a>
+            
+            <ul id="nav-mobile2" class="left hide-on-med-and-down">
+                <li><a class="dropdown-trigger" href="#!" data-target="rcs">RCS<i class="material-icons right">arrow_drop_down</i></a></li>
+            
+                <li><a href="{% url 'stress_sensitivity:main' %}" >Estres y Sensibilidad</a></li>
+                <li><a href="{% url 'rcs_optimization:main' %}" >RCS Optimizado</a></li>
+            </ul> 
+
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a class="dropdown-button" href="#!" data-activates="conf">Cuenta<i class="material-icons right">arrow_drop_down</i></a></li>
             </ul>
