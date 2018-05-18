@@ -23,3 +23,12 @@ $('#submit_button_global').click(function(){
     $("#fGlobal").submit();
 });
 
+
+  $(document).ready(function(){
+    $('select').formSelect();
+  });
+
+  
+  $(document).ready(function(){
+    $('.datepicker').datepicker();
+  });

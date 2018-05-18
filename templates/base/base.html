@@ -47,13 +47,14 @@
                 <a href="{% url 'portal:index' %}" class="brand-logo center" ><img  src="{% static 'img/risk.png' %}"></a>
             
             <ul id="nav-mobile2" class="left hide-on-med-and-down">
-                <li><a class="dropdown-trigger" href="#!" data-target="rcs">RCS<i class="material-icons right">arrow_drop_down</i></a></li>
+                <li><a class="dropdown-button" href="#!" data-activates="rcs">RCS<i class="material-icons right">arrow_drop_down</i></a></li>
             
                 <li><a href="{% url 'stress_sensitivity:main' %}" >Estres y Sensibilidad</a></li>
                 <li><a href="{% url 'rcs_optimization:main' %}" >RCS Optimizado</a></li>
             </ul> 
 
             <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="#" >Mis Resultados</a></li>
                 <li><a class="dropdown-button" href="#!" data-activates="conf">Cuenta<i class="material-icons right">arrow_drop_down</i></a></li>
             </ul>
             </div><!-- /.navbar-collapse -->
