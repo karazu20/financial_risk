@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from rcs_contributions.middleware import *
 from rcs_contributions.models import *
@@ -16,8 +16,11 @@ def main(request):
 	print 'estoy en rcs'	
 	if request.method == 'POST':
 		form_rcs = RCSForm(request.POST)
+		#fecha=request.POST['fecha_corte']
+		#print fecha
+		#print form_rcs
 		if form_rcs.is_valid():
-			
+			print 'sol procesada'
 			rcs=form_rcs.save()
 			execute_rcs(rcs)			
 			return redirect('rcs_contributions:success')

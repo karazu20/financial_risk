@@ -131,3 +131,7 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 LOGIN_URL = '/'
 LOGIN_REDIRECT_URL = reverse_lazy('portal:index') 
 LOGOUT_REDIRECT_URL = reverse_lazy('login')
+
+#USE_L10N = True
+
+DATE_INPUT_FORMATS = ('%d/%m/%Y','%m/%d/%Y')
