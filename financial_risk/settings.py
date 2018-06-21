@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_celery_results',
     'portal',
     'rcs_contributions',
     'rcs_optimization',
@@ -135,3 +136,5 @@ LOGOUT_REDIRECT_URL = reverse_lazy('login')
 #USE_L10N = True
 
 DATE_INPUT_FORMATS = ('%d/%m/%Y','%m/%d/%Y')
+CELERY_RESULT_BACKEND = 'django-db'
+CELERY_RESULT_BACKEND = 'django-cache'
