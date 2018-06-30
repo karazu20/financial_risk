@@ -7,6 +7,7 @@ Proyecto de riesgos financieros
 - virtualenv
 - python-pip
 
+
 ## Configuración
 ```
 $ virtualenv .env
@@ -17,8 +18,27 @@ $ source .env/bin/activate
 ### Dependencias
 ```
 $ pip install django
+$ pip install Celery
+$ apt-get install -y erlang
+$ apt-get install rabbitmq-server
 
 ```
+
+## Rabbit MQ
+```
+$ sudo systemctl enable rabbitmq-server
+$ sudo systemctl start rabbitmq-server
+
+```
+
+
+## Celery
+```
+$ celery -A financial_risk worker -l info
+
+```
+
+
 ## Crear BD
 ```
 python manage.py makemigrations
