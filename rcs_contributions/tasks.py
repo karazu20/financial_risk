@@ -22,8 +22,8 @@ def add(x, y):
 def exe_calculate(rcs):
 	print 'Execute task'
 	print rcs
-	for i in range(100000):
-		print i 
+	#for i in range(100000):
+	#				print i 
 	execute_rcs(rcs)
 	send_mail()
 

@@ -15,4 +15,5 @@ db.sqlite3
 rcs_contributions/migrations
 stress_sensitivity/migrations
 rcs_optimization/migrations
+rcs_contributions/ContribucionRCSActivos_Allianz
 

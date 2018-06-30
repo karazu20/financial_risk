@@ -14,7 +14,7 @@ import time
 
 #Params gmail server and email accounts
 mail_server = 'smtp.gmail.com:587'
-from_addr = 'Altan monitor.altanredes@gmail.com'
+from_addr = 'karazu20@gmail.com'
 to_addr = [ 'link_df17@hotmail.com']
     
 # Credentials email
@@ -24,9 +24,9 @@ password = 'cbi%1985'
 
 
 
-def sendMail (errores, hours):  
+def send_mail ():  
     themsg = MIMEMultipart('alternative')
-    themsg['Subject'] = 'Errores Apigee'
+    themsg['Subject'] = 'Resultados de Riesgos financieros'
     themsg['To'] = ", ".join(to_addr)
     themsg['From'] = from_addr
     html = '''

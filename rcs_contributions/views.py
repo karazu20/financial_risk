@@ -20,10 +20,10 @@ def main(request):
 		#fecha=request.POST['fecha_corte']
 		#print fecha
 		#print form_rcs
-		if form_rcs.is_valid():
+		if True : #form_rcs.is_valid():
 			print 'sol procesada'
-			rcs=form_rcs.save()
-			print rcs
+			#rcs=form_rcs.save()
+			#print rcs
 			exe_calculate.delay("tarea a ejecutar")
 			#execute_rcs(rcs)			
 			return  render(request, 'rcs_contributions/success.html')
