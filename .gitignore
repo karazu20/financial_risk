@@ -12,6 +12,7 @@ __pycache__/
 #DB
 db.sqlite3
 
+charges_files/
 rcs_contributions/migrations
 stress_sensitivity/migrations
 rcs_optimization/migrations

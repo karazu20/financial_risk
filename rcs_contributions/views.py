@@ -16,13 +16,14 @@ from rcs_contributions.tasks import *
 def main(request):	
 	print 'estoy en rcs'	
 	if request.method == 'POST':
-		form_rcs = RCSForm(request.POST)
-		#fecha=request.POST['fecha_corte']
+		form_rcs = RCSForm(request.POST, request.FILES)
+		#print request.POST
+		print request.POST['fecha_corte']
 		#print fecha
 		#print form_rcs
-		if True : #form_rcs.is_valid():
+		if form_rcs.is_valid():
 			print 'sol procesada'
-			#rcs=form_rcs.save()
+			rcs=form_rcs.save()
 			#print rcs
 			exe_calculate.delay("tarea a ejecutar")
 			#execute_rcs(rcs)			

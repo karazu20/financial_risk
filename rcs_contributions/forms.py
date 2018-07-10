@@ -23,7 +23,7 @@ class RCSForm(forms.ModelForm):
 				"cat",
 				"vec",
 				"type_analisys",
-			#	"fecha_corte",
+				"fecha_corte",
 				"numero_escenarios",
 				"costo_capital",
 				"inflacion",
@@ -41,7 +41,7 @@ class RCSForm(forms.ModelForm):
 				"cat":"CAT xlsx",
 				"vec":"VEC xlsx",
 				"type_analisys":"Tipo de analisis",
-			#	"fecha_corte":"Fecha de corte",
+				"fecha_corte":"Fecha de corte",
 				"numero_escenarios": "Número de escenarios",
 				"costo_capital": "Costo Capital",
 				"inflacion": "Inflación",
@@ -57,7 +57,7 @@ class RCSForm(forms.ModelForm):
 			'cat': forms.FileInput(attrs={ "accept":".xls,.xlsx"}),
 			'vec': forms.FileInput(attrs={ "accept":".xls,.xlsx"}),
 			'type_analisys': forms.Select(),
-			#"fecha_corte":forms.DateInput(attrs={ 'class':'datepicker'}),
+			"fecha_corte":forms.DateInput(attrs={ 'class':'datepicker'}),
 			"numero_escenarios":forms.TextInput(),
 			"costo_capital":forms.TextInput(),
 			"inflacion":forms.TextInput(),
@@ -65,8 +65,8 @@ class RCSForm(forms.ModelForm):
 			"complementos":forms.CheckboxInput(attrs={ 'class':'filled-in'}),			
 		}
 
-		#input_formats={
+		"""input_formats={
 
-		#	'fecha_corte': ['%d/%m/%Y','%m/%d/%Y']
+			'fecha_corte': ['%d/%m/%Y','%m/%d/%Y']
 
-		#}
+		}"""

@@ -80,6 +80,6 @@ class RCS(models.Model):
 	)
 
 	def __str__(self):
-		return str (self.folio)
+		return str (self.id) + " - " + str (self.folio) + " - " + str (self.costo_capital)
 	
 	

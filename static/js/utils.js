@@ -52,7 +52,7 @@ $('#submit_button_global').click(function(){
 
  document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.datepicker');
-    var options = {'format': 'dd/mm/yyyy'}
+    var options = {'format': 'yyyy-mm-dd'}
     var instances = M.Datepicker.init(elems, options);
   });
 
