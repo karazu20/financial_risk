@@ -8,7 +8,7 @@ from rcs_contributions.models import *
 from rcs_contributions.forms import *
 from rcs_contributions.tasks import *
 #from middleware import *
-
+from django.conf import settings
 
 
 # Create your views here.
@@ -22,10 +22,16 @@ def main(request):
 		#print fecha
 		#print form_rcs
 		if form_rcs.is_valid():
-			print 'sol procesada'
+			print 'RCS valido'
 			rcs=form_rcs.save()
+			paramRCS = {
+						'dir': settings.PATH_FILES, 
+    					'fechacorte': '20170331', 
+    					'numEscenarios': rcs.numero_escenarios, 
+    					'costoCapital': rcs.costo_capital, 
+    					'inflacion': rcs.inflacion}
 			#print rcs
-			exe_calculate.delay("tarea a ejecutar")
+			exe_calculate.delay(paramRCS)
 			#execute_rcs(rcs)			
 			return  render(request, 'rcs_contributions/success.html')
 		else:
