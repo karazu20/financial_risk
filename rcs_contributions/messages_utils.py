@@ -8,8 +8,8 @@ from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
 import os
 import time
-
-
+import shutil
+from django.conf import settings
 
 
 #Params gmail server and email accounts
@@ -25,7 +25,7 @@ password = 'cbi%1985'
 
 
 def send_mail ():  
-    themsg = MIMEMultipart('alternative')
+    themsg = MIMEMultipart()
     themsg['Subject'] = 'Resultados de Riesgos financieros'
     themsg['To'] = ", ".join(to_addr)
     themsg['From'] = from_addr
@@ -43,7 +43,7 @@ def send_mail ():
                 
                 <br>
                     <p>
-                        %s
+                        < a href="%s">Resultados</href>
                     </p>
                 <br>
                 <p>
@@ -54,8 +54,8 @@ def send_mail ():
         </html>
     ''' % ("Ejecucion RCS", "google.com.mx")
 
-    part2 = MIMEText(html, 'html', 'utf-8')
-    themsg.attach(part2)
+    part1 = MIMEText(html, 'html', 'utf-8')
+    themsg.attach(part1)    
     server = smtplib.SMTP(mail_server)
     server.ehlo()
     server.starttls()
@@ -64,3 +64,7 @@ def send_mail ():
     server.quit()
 
     print 'Email ok'
+
+def zip_out(path_out, path_in):
+    out = settings.PATH_RESULTS + "out_rcs"
+    shutil.make_archive(out, 'zip', '/home/conker/alsea/diagramas')

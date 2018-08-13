@@ -25,6 +25,7 @@ def exe_calculate(rcs):
 	#for i in range(100000):
 	#				print i 
 	execute_rcs(rcs)
+	zip_out("","")
 	send_mail()
 
 
