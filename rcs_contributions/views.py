@@ -27,10 +27,10 @@ def main(request):
 			rcs=form_rcs.save()
 			paramRCS = {
 						'dir': settings.PATH_FILES, 
-    					'fechacorte': '20170331', 
-    					'numEscenarios': rcs.numero_escenarios, 
-    					'costoCapital': rcs.costo_capital, 
-    					'inflacion': rcs.inflacion}
+						'fechacorte': '20170331', 
+						'numEscenarios': rcs.numero_escenarios, 
+						'costoCapital': rcs.costo_capital, 
+						'inflacion': rcs.inflacion}
 			print paramRCS
 			exe_calculate.delay(paramRCS)
 			#execute_rcs(rcs)			
@@ -49,11 +49,11 @@ def success(request):
 
 
 def download_zip(request):
-    zip_path = settings.PATH_RESULTS + "out.zip"
-    zip_file =  open(zip_path, 'rb')
-    response = HttpResponse(zip_file, content_type='application/zip')
-    response['Content-Disposition'] = 'attachment; filename=%s' % 'A.zip'
-    response['Content-Length'] = os.path.getsize(zip_path)
-    zip_file.close()
-
-    return response
+	print ("in results")
+	zip_path = settings.PATH_RESULTS + "out.zip"
+	zip_file =  open(zip_path, 'rb')
+	response = HttpResponse(zip_file, content_type='application/zip')
+	response['Content-Disposition'] = 'attachment; filename=%s' % 'resultados.zip'
+	response['Content-Length'] = os.path.getsize(zip_path)
+	zip_file.close()
+	return response
