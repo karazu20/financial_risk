@@ -2,6 +2,7 @@ from celery.decorators import task
 import time
 from rcs_contributions.middleware import *
 from rcs_contributions.messages_utils import *
+from django.conf import settings
 
 
 COMPLETA = 2
@@ -25,6 +26,8 @@ def exe_calculate(rcs):
 	#for i in range(100000):
 	#				print i 
 	execute_rcs(rcs)
+	 
+	out = zip_out("", settings.PATH_FILES + "/ResultadosSalida")
 	send_mail()
 
 

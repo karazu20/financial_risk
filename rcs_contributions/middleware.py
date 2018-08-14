@@ -14,7 +14,6 @@ def execute_rcs(rcs):
     #rcs = {'dir': '/media/sf_Herramientas_RCS/ContribucionRCSActivos_Allianz', 
     #				'fechacorte': '20170331', 'numEscenarios': '10000', 'costoCapital': '0.15', 'inflacion': '0.05'}
     ret = eng.contMargRCSfun(rcs)
-
     print ret
     print "exit call" 
 

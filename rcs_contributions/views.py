@@ -9,6 +9,7 @@ from rcs_contributions.forms import *
 from rcs_contributions.tasks import *
 #from middleware import *
 from django.conf import settings
+from django.http import HttpResponse
 
 
 # Create your views here.
@@ -26,11 +27,13 @@ def main(request):
 			rcs=form_rcs.save()
 			paramRCS = {
 						'dir': settings.PATH_FILES, 
+
     					'fechacorte': '20170331', 
     					'numEscenarios': str (rcs.numero_escenarios), 
     					'costoCapital': str(rcs.costo_capital), 
     					'inflacion': str(rcs.inflacion)}
 			#print rcs
+			print paramRCS
 			exe_calculate.delay(paramRCS)
 			#execute_rcs(rcs)			
 			return  render(request, 'rcs_contributions/success.html')
@@ -45,3 +48,14 @@ def main(request):
 @login_required
 def success(request):
 	return render(request, 'rcs_contributions/success.html')
+
+
+def download_zip(request):
+	print ("in results")
+	zip_path = settings.PATH_RESULTS + "out.zip"
+	zip_file =  open(zip_path, 'rb')
+	response = HttpResponse(zip_file, content_type='application/zip')
+	response['Content-Disposition'] = 'attachment; filename=%s' % 'resultados.zip'
+	response['Content-Length'] = os.path.getsize(zip_path)
+	zip_file.close()
+	return response

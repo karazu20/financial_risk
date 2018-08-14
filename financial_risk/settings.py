@@ -17,6 +17,7 @@ from django.core.urlresolvers import reverse_lazy
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 PATH_FILES = BASE_DIR +  "/charges_files"
+PATH_RESULTS = PATH_FILES + "/resultados/"
 print PATH_FILES
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
