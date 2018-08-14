@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'portal',
     'rcs_contributions',
     'rcs_optimization',
+    'stress_sensitivity',
+    #'rcs_sensitivity',
 ]
 
 MIDDLEWARE = [

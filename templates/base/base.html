@@ -38,7 +38,23 @@
 
         <ul id="rcs" class="dropdown-content">                        
                     <li><a href="{% url 'rcs_contributions:main' %}" >Análisis</a></li>
-                    <li><a href="#">Resultados</a></li>                        
+                    <li><a href="#">Resultados</a></li> 
+        </ul>
+
+        <ul id="ssensitivity" class="dropdown-content">            
+                    <li><a href="{% url 'stress_sensitivity:main' %}" >Estres</a></li>
+                    <li><a href="{% url 'stress_sensitivity:main_uno' %}">Sensibilidad</a></li>
+        </ul>
+        
+        <ul id="opt" class="dropdown-content">            
+                    <li><a href="{% url 'rcs_optimization:main' %}" >Portafolio</a></li>
+                   <!-- <li><a href="{% url 'rcs_optimization:Resultsmain' %}" >Resultados</a></li>-->
+                    <li><a href="#">Grafico</a></li>                       
+        </ul>
+        <ul id="opt" class="dropdown-content">            
+                    <li><a href="{% url 'dummy:main' %}" >uno</a></li>
+                   <!-- <li><a href="{% url 'rcs_optimization:Resultsmain' %}" >Resultados</a></li>-->
+                    <li><a href="#">Grafico</a></li>                       
         </ul>
 
         <nav>
@@ -49,8 +65,9 @@
             <ul id="nav-mobile2" class="left hide-on-med-and-down">
                 <li><a class="dropdown-trigger" href="#!" data-target="rcs">RCS<i class="material-icons right">arrow_drop_down</i></a></li>
             
-                <li><a href="{% url 'stress_sensitivity:main' %}" >Estres y Sensibilidad</a></li>
-                <li><a href="{% url 'rcs_optimization:main' %}" >RCS Optimizado</a></li>
+                <li><a class="dropdown-trigger" href"#!" data-target="ssensitivity">Estres y Sensibilidad<i class="material-icons right">arrow_drop_down</i></a></li>
+                <li><a class="dropdown-trigger" href"#!" data-target="opt">RCS Portafolio Optimizado<i class="material-icons right">arrow_drop_down</i></a></li>
+                <li><a class="dropdown-trigger" href"#!" data-target="opt">Sensibilidad<i class="material-icons right">arrow_drop_down</i></a></li>
             </ul> 
 
             <ul id="nav-mobile" class="right hide-on-med-and-down">

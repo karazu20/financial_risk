@@ -17,8 +17,8 @@ class RCSForm(forms.ModelForm):
 		fields = [				
 				"sim",
 				"lyot",
-				"lylp",
-				"aux",
+				#"lylp",
+				#"aux",
 				"ref",
 				"cat",
 				"vec",
@@ -35,8 +35,8 @@ class RCSForm(forms.ModelForm):
 		labels = {
 				"sim":"SIM mat",
 				"lyot":"LYOT mat",
-				"lylp":"LYLP mat",
-				"aux":"AUX mat",
+				#"lylp":"LYLP mat",
+				#"aux":"AUX mat",
 				"ref":"REF mat",
 				"cat":"CAT xlsx",
 				"vec":"VEC xlsx",
@@ -49,11 +49,11 @@ class RCSForm(forms.ModelForm):
 				"complementos": "Complementos",
 		}
 		widgets = {
-			'sim': forms.FileInput(attrs={ "accept":".xls,.xlsx"}),
-			'lyot': forms.FileInput(attrs={ "accept":".xls,.xlsx"}),
-			'lylp': forms.FileInput(attrs={ "accept":".xls,.xlsx"}),
-			'aux': forms.FileInput(attrs={ "accept":".xls,.xlsx"}),
-			'ref': forms.FileInput(attrs={ "accept":".xls,.xlsx"}),
+			'sim': forms.FileInput(attrs={ "accept":".mat"}),
+			'lyot': forms.FileInput(attrs={ "accept":".mat"}),
+			#'lylp': forms.FileInput(attrs={ "accept":".mat"}),
+			#'aux': forms.FileInput(attrs={ "accept":".mat"}),
+			'ref': forms.FileInput(attrs={ "accept":".mat"}),
 			'cat': forms.FileInput(attrs={ "accept":".xls,.xlsx"}),
 			'vec': forms.FileInput(attrs={ "accept":".xls,.xlsx"}),
 			'type_analisys': forms.Select(),

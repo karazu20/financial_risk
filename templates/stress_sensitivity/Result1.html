@@ -1,0 +1,28 @@
+{% extends 'base/base.html' %}
+
+{% load staticfiles %}
+
+{% block content %}
+
+    <div class="container" style="padding-top: 2cm;">
+
+	<h1> Stress Sensitivity <h2>
+	<div class="row">
+	<!--<form id="form" enctype="multipart/form-data" class="col s12" action="" method="post">{% csrf_token %}-->
+    	<div  class="input-field col s6 ">
+		      
+				    <p> Resultado:{{resultado}}</p>
+				    <table>
+				    	<tr>
+				    	<td> {{resultado}}</td>
+			  			</tr>
+			  		</table>
+		</div>
+		<div class="row">		
+		   <button id="atras" class="btn waves-effect waves-light" >Regresar</button>
+        
+	    </div>
+		<!--</form>-->
+	</div>
+    </div>
+{% endblock %}

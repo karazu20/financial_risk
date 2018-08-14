@@ -1,10 +1,9 @@
 from django.conf.urls import url
-from rcs_optimization.views import *
+from rcs_sensitivity.views import *
 
 
 
 urlpatterns = [
     url(r'^$', main, name='main'), 
-    url(r'^$', Resultsmain, name='Resultsmain'), 
 
 ] 

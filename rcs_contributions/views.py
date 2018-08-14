@@ -27,9 +27,9 @@ def main(request):
 			paramRCS = {
 						'dir': settings.PATH_FILES, 
     					'fechacorte': '20170331', 
-    					'numEscenarios': rcs.numero_escenarios, 
-    					'costoCapital': rcs.costo_capital, 
-    					'inflacion': rcs.inflacion}
+    					'numEscenarios': str (rcs.numero_escenarios), 
+    					'costoCapital': str(rcs.costo_capital), 
+    					'inflacion': str(rcs.inflacion)}
 			#print rcs
 			exe_calculate.delay(paramRCS)
 			#execute_rcs(rcs)			
