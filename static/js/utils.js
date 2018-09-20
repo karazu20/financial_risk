@@ -57,5 +57,16 @@ $('#submit_button_global').click(function(){
   });
 
   $(document).ready(function(){
-  	$(".dropdown-trigger").dropdown();
+  	$(".dropdown-trigger").dropdown(
+
+                                      {     alignment:'right',
+                                            autoTrigger:false,
+                                            inDuration: 1000,
+                                            outDuration: 250,
+                                            coverTrigger: false,
+                                            hover: true, // Activate on hover
+                                            belowOrigin: false, // Displays dropdown below the button                                            
+                                            alignment: 'left' // Displays dropdown with edge aligned to the left of button
+                                          }
+                                    );
   });

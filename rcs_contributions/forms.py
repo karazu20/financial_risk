@@ -65,6 +65,45 @@ class RCSForm(forms.ModelForm):
 			"complementos":forms.CheckboxInput(attrs={ 'class':'filled-in'}),			
 		}
 
+
+class RCSFormMin(forms.ModelForm):
+
+	class Meta:
+		model = RCS
+
+		fields = [				
+				
+				"type_analisys",
+				"fecha_corte",
+				"numero_escenarios",
+				"costo_capital",
+				"inflacion",
+				"reprocesar",
+				"complementos",
+				
+
+		]
+		labels = {
+				
+				"type_analisys":"Tipo de analisis",
+				"fecha_corte":"Fecha de corte",
+				"numero_escenarios": "Número de escenarios",
+				"costo_capital": "Costo Capital",
+				"inflacion": "Inflación",
+				"reprocesar": "Reporcesar",
+				"complementos": "Complementos",
+		}
+		widgets = {
+			
+			'type_analisys': forms.Select(),
+			"fecha_corte":forms.DateInput(attrs={ 'class':'datepicker'}),
+			"numero_escenarios":forms.TextInput(),
+			"costo_capital":forms.TextInput(),
+			"inflacion":forms.TextInput(),
+			"reprocesar":forms.CheckboxInput(attrs={ 'class':'filled-in'}),
+			"complementos":forms.CheckboxInput(attrs={ 'class':'filled-in'}),			
+		}
+
 		"""input_formats={
 
 			'fecha_corte': ['%d/%m/%Y','%m/%d/%Y']

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Example nested dropdown</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+    <style>
+        .right-triangle {
+            float: right;
+        }
+        .dropdown-nested {
+            overflow-y: visible;
+        }
+        .dropdown-content .dropdown-content {
+            margin-left: 100%;
+        }
+        .container {
+            background: #eee;
+            padding: 200px 100px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <h3>Example nested dropdown</h3>
+            </div>
+        </div>
+        
+        <a class='dropdown-button btn' href='#' data-activates='dropdown1' data-beloworigin="true">Nested DropDown</a>
+
+        <ul id='dropdown1' class='dropdown-content dropdown-nested'>
+        <li><a class='dropdown-button' href='#' data-activates='dropdown2' data-hover="hover" data-alignment="left">one<span class="right-triangle">&#9656;</span></a></li>
+            <li><a href="#!">two</a></li>
+            <li><a href="#!">three</a></li>
+        </ul>
+
+        <ul id='dropdown2' class='dropdown-content dropdown-nested'>
+            <li><a href="#!">one</a></li>
+            <li><a class='dropdown-button' href="#" data-activates="dropdown3" data-hover="hover" data-alignment="left">two<span class="right-triangle">&#9656;</span></a></li>
+            <li><a href="#!">three</a></li>
+        </ul>
+
+        <ul id='dropdown3' class='dropdown-content'>
+            <li><a href="#!">three</a></li>
+            <li><a href="#!">four</a></li>
+            <li><a href="#!">five</a></li>
+            <li><a href="#!">six</a></li>
+        </ul>
+    </div>
+</body>
+</html>

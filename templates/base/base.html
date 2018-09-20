@@ -21,6 +21,32 @@
     
     <script type="text/javascript" src="{% static 'js/materialize.min.js'%}"></script>
 
+     <style>
+        .dropdown-content {
+           overflow-y: visible;
+        }
+
+        .dropdown-content .dropdown-content {
+           margin-left: 100%;
+        }
+        /*
+        .right-triangle {
+            float: right;            
+        }
+        .dropdown-content.nested {
+           overflow-y: visible;
+        }
+
+        .dropdown-content .dropdown-content {
+            margin-left: 100%;
+        }
+        .container {
+            background: #eee;
+            padding: 200px 100px;
+            border-radius: 8px;
+        }*/
+    </style>
+
 	{% endblock %}
 
 	<title>{% block title %} Análisis de Riesgos {% endblock %}</title>
@@ -31,46 +57,59 @@
     <div>
     	{% block navbar %}
 
-        <ul id="conf"  class="dropdown-content">
-                    <li><a href="{% url 'logout' %}" >Salir</a></li>
-                    <li><a href="#" >Contacto</a></li>
+        
+        <ul id="sub"  class="dropdown-content">
+                    <li><a class="dropdown-trigger" href="#!" data-target="sub-2" data-hover="hover">One</a></li>
+                    <li><a href="#!" >two</a></li>
         </ul>
 
+        <ul id="sub-2"  class="dropdown-content">
+                    <li><a href="#!" >one</a></li>
+                    <li><a href="#!" >two</a></li>
+        </ul>
+
+        <ul id="conf"  class="dropdown-content">
+                    <li><a href="{% url 'logout' %}" >Salir</a></li>
+                    <li><a href="#!" >Contacto</a></li>
+        </ul>
+        
+
         <ul id="rcs" class="dropdown-content">                        
-                    <li><a href="{% url 'rcs_contributions:main' %}" >Análisis</a></li>
+                    <li>
+                    <a href="{% url 'rcs_contributions:main' %}" >Análisis</a>
+            <!--<a class='dropdown-button' href="#" data-activates="sub-rcs" data-hover="hover" data-alignment="right">Sub<span >&#9656;</span></a>-->
+                    </li>
                     <li><a href="{% url 'rcs_contributions:results' %}">Resultados</a></li>                        
         </ul>
 
-        <ul id="ssensitivity" class="dropdown-content">            
+        <ul id="sensitivity" class="dropdown-content">            
                     <li><a href="{% url 'stress_sensitivity:main' %}" >Estres</a></li>
-                    <li><a href="{% url 'stress_sensitivity:main_uno' %}">Sensibilidad</a></li>
+                    
         </ul>
         
         <ul id="opt" class="dropdown-content">            
-                    <li><a href="{% url 'rcs_optimization:main' %}" >Portafolio</a></li>
-                   <!-- <li><a href="{% url 'rcs_optimization:Resultsmain' %}" >Resultados</a></li>-->
-                    <li><a href="#">Grafico</a></li>                       
+                    <li>
+                    <a class="dropdown-trigger" href="#!" data-target="sub" data-hover="hover" data-alignment="left">Opciones</a>
+                    <!--<a href="{% url 'rcs_optimization:main' %}" >Portafolio</a>-->
+
+                    </li>
+                   <li><a href="{% url 'rcs_optimization:Resultsmain' %}" >Resultados</a></li>
+                    
         </ul>
-        <ul id="opt" class="dropdown-content">            
-                    <li><a href="{% url 'dummy:main' %}" >uno</a></li>
-                   <!-- <li><a href="{% url 'rcs_optimization:Resultsmain' %}" >Resultados</a></li>-->
-                    <li><a href="#">Grafico</a></li>                       
-        </ul>
+        
 
         <nav>
         <div class="nav-wrapper teal">
                 
-                <a href="{% url 'portal:index' %}" class="brand-logo center" ><img  src="{% static 'img/risk.png' %}"></a>
+               <!-- <a href="{% url 'portal:index' %}" class="brand-logo center" ><img  src="{% static 'img/risk.png' %}"></a>-->
             
-            <ul id="nav-mobile2" class="left hide-on-med-and-down">
+            <ul id="nav-mobile2" class="left">
                 <li><a class="dropdown-trigger" href="#!" data-target="rcs">RCS<i class="material-icons right">arrow_drop_down</i></a></li>
-            
-                <li><a class="dropdown-trigger" href"#!" data-target="ssensitivity">Estres y Sensibilidad<i class="material-icons right">arrow_drop_down</i></a></li>
-                <li><a class="dropdown-trigger" href"#!" data-target="opt">RCS Portafolio Optimizado<i class="material-icons right">arrow_drop_down</i></a></li>
-                <li><a class="dropdown-trigger" href"#!" data-target="opt">Sensibilidad<i class="material-icons right">arrow_drop_down</i></a></li>
+                <li><a class="dropdown-trigger" href="#!" data-target="sensitivity">Estres y Sensibilidad<i class="material-icons right">arrow_drop_down</i></a></li>
+                <li><a class="dropdown-trigger btn" href="#!" data-target="opt"  data-beloworigin="true" data-hover="hover">RCS Portafolio Optimizado<i class="material-icons right">arrow_drop_down</i></a></li>                
             </ul> 
 
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <ul id="nav-mobile" class="right">
                 <li><a href="#" >Mis Resultados</a></li>
                 <li><a class="dropdown-trigger" href="#!" data-target="conf">Cuenta<i class="material-icons right">arrow_drop_down</i></a></li>
             </ul>

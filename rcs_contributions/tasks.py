@@ -28,7 +28,7 @@ def exe_calculate(rcs):
 	execute_rcs(rcs)
 	 
 	out = zip_out("", settings.PATH_FILES + "/ResultadosSalida")
-	send_mail()
+	send_mail(rcs['email'])
 
 
 

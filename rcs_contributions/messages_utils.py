@@ -15,7 +15,7 @@ from django.conf import settings
 #Params gmail server and email accounts
 mail_server = 'smtp.gmail.com:587'
 from_addr = 'karazu20@gmail.com'
-to_addr = [ 'adan_dh@yahoo.com.mx']
+#to_addr = [ 'adan_dh@yahoo.com.mx']
     
 # Credentials email
 username = 'karazu20@gmail.com'
@@ -24,10 +24,10 @@ password = 'cbi%1985'
 
 
 
-def send_mail ():  
+def send_mail (email):  
     themsg = MIMEMultipart()
     themsg['Subject'] = 'Resultados de Riesgos financieros'
-    themsg['To'] = ", ".join(to_addr)
+    themsg['To'] = email #", ".join(to_addr)
     themsg['From'] = from_addr
     html = '''
         <html>
@@ -52,7 +52,7 @@ def send_mail ():
                 
             </body>
         </html>
-    ''' % ("Ejecucion RCS", "http://127.0.0.1:8000/financial_risk/rcs_contributions/download")
+    ''' % ("Ejecucion RCS", "http://127.0.0.1:8000/financial_risk/rcs_contributions/results")
 
     part1 = MIMEText(html, 'html', 'utf-8')
     themsg.attach(part1)    
@@ -60,7 +60,7 @@ def send_mail ():
     server.ehlo()
     server.starttls()
     server.login(username,password)
-    server.sendmail(from_addr, to_addr, str(themsg))
+    server.sendmail(from_addr, email, str(themsg))
     server.quit()
 
     print 'Email ok'

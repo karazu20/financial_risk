@@ -16,15 +16,15 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.auth.views import login, logout_then_login
+from financial_risk.views import Test
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^financial_risk/portal/', include('portal.urls', namespace='portal')),
     url(r'^financial_risk/rcs_contributions/', include('rcs_contributions.urls', namespace='rcs_contributions')),
-    url(r'^financial_risk/rcs_optimization/', include('rcs_optimization.urls', namespace='rcs_optimization')),
-    url(r'^financial_risk/dummy/', include('dummy.urls', namespace='dummy')),
-    #url(r'^financial_risk/rcs_sensitivity/', include('rcs_sensitivity.urls', namespace='rcs_sensitivity')),
+    url(r'^financial_risk/rcs_optimization/', include('rcs_optimization.urls', namespace='rcs_optimization')),    
     url(r'^financial_risk/stress_sensitivity/', include('stress_sensitivity.urls', namespace='stress_sensitivity')),    
     url(r'^$', login, {'template_name':'portal/login.html'}, name='login'),
+    url(r'^test/', Test.as_view(), name='test_template'),
     url(r'^logout/', logout_then_login, name='logout'),  
 ]
