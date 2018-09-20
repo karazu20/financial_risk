@@ -12,6 +12,5 @@ from django.contrib.auth import authenticate, login
 # Create your views here.
 @login_required
 def index(request):	
-	print '1'	
 	contexto={}	
 	return render(request, 'portal/index.html', contexto)

@@ -1,7 +1,7 @@
 from django.conf.urls import url, include
 from portal.views import *
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth.views import login, logout_then_login
+
+
 
 
 

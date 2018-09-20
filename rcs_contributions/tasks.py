@@ -14,17 +14,15 @@ def add(x, y):
 	for i in range (100):
 		x=i+x
 		y = i + y*i
-		print i
+		#print i
 
 	return x + y
 
 
 @task(name="execute_task")
 def exe_calculate(rcs):
-	print 'Execute task'
-	print rcs
-	#for i in range(100000):
-	#				print i 
+	print ('Execute task')
+	
 	execute_rcs(rcs)
 	 
 	out = zip_out("", settings.PATH_FILES + "/ResultadosSalida")

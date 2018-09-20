@@ -11,10 +11,9 @@ from rcs_optimization.middleware import *
 
 @login_required
 def main(request):
-    print 'estoy en rcs optimization'
     contexto = {}
     return render(request, 'rcs_optimization/main.html', contexto)
+    
 def Resultsmain(request):
-    print 'estoy en rcs optimization'
     contexto = {}
     return render(request, 'rcs_contributions/Resultsmain.html',contexto)

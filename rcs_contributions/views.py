@@ -16,14 +16,14 @@ from financial_risk.functions import *
 # Create your views here.
 @login_required
 def main(request):	
-	print 'estoy en rcs'
+	print( 'estoy en rcs')
 	user =request.user
 	if request.method == 'POST':
 		form_rcs = RCSForm(request.POST, request.FILES)		
-		print request.POST['fecha_corte']	
+		print (request.POST['fecha_corte']	)
 		print_word('Prueba print')	
 		if form_rcs.is_valid():
-			print 'RCS valido'
+			print( 'RCS valido')
 			rcs=form_rcs.save()
 			print (rcs.sim)
 			paramRCS = {
@@ -34,11 +34,11 @@ def main(request):
 						'inflacion': str(rcs.inflacion),
 						'email': user.email}
 			
-			print paramRCS
+			print (paramRCS)
 			#exe_calculate.delay(paramRCS)			
 			return  render(request, 'rcs_contributions/success.html')
 		else:
-			print 'datos invalidos'
+			print ('datos invalidos')
 			return render(request, 'rcs_contributions/main.html', {'form': form_rcs})
 	else:		
 		form_rcs = RCSForm()

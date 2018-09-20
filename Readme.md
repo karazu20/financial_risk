@@ -18,7 +18,8 @@ $ source .env/bin/activate
 ### Dependencias
 ```
 $ pip install django
-$ pip install Celery
+$ pip install celery
+$ pip install django_celery_results
 $ apt-get install -y erlang
 $ apt-get install rabbitmq-server
 

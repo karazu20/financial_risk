@@ -13,7 +13,7 @@ def suma(a,b,c):
 
 @login_required
 def main(request):	
-	print 'estoyr en stress sensitivity'	
+	print ('estoyr en stress sensitivity')
 	#print('el resultado es', suma(1,2,3))
 	#form_stress = StressForm()
 	#strss=form_stress.save()
@@ -22,7 +22,6 @@ def main(request):
 	if request.method == 'POST':
 		form_stress = StressForm(request.POST)
 		if form_stress.is_valid():
-			print 'Stress valido'
 			strss=form_stress.save()
 			#paramSt = {
 			#			'a': strss.a, 
@@ -41,7 +40,7 @@ def main(request):
 			#exe_calculate.delay(paramRCS)
 			#execute_rcs(rcs)			
 		else:
-			print 'datos invalidos'
+			print ('datos invalidos')
 			return render(request, 'stress_sensitivity/main.html', {'form': form_stress})
 	else:		
 		form_stress = StressForm()
@@ -50,10 +49,10 @@ def main(request):
 
 
 def main_uno(request):	
-	print 'estoyr en sensitivity'	
+	print ('estoyr en sensitivity')
 	contexto={}		
 	return render(request, 'stress_sensitivity/main1.html', {})
 
 def resultado(request):	
-	print 'estoy en en resulatdo de la suma'	
+	print ('estoy en en resulatdo de la suma')
 	return render(request, 'stress_sensitivity/Result1.html', {'content':['If you want to conctact','1']})

@@ -21,7 +21,7 @@ TYPE_ANALISYS={
 
 class RCS(models.Model):
 	folio = models.IntegerField(null=True)
-	owner = models.ForeignKey(User, related_name='owner', null=True)
+	owner = models.ForeignKey(User, related_name='owner', null=True, on_delete=models.CASCADE)
 	date_insert = models.DateTimeField(default=timezone.now)
 	date_update = models.DateTimeField(default=timezone.now)
 	date_init = models.DateTimeField(verbose_name='Fecha de inicio',  null=True)

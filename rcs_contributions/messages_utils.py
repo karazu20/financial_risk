@@ -63,7 +63,7 @@ def send_mail (email):
     server.sendmail(from_addr, email, str(themsg))
     server.quit()
 
-    print 'Email ok'
+    print ('Email ok')
 
 def zip_out(path_out, path_in):
     out = settings.PATH_RESULTS + "out"

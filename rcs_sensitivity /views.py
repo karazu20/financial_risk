@@ -8,6 +8,5 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 @login_required
 def main(request):	
-	print 'estoy en rcs sensitivity'	
 	contexto={}		
 	return render(request, 'rcs_sensitivity/main.html', contexto)

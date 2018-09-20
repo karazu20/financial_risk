@@ -14,8 +14,7 @@ def validate_password_strength(value):
 	2 digits and 1 Upper case letter.
 	"""
 	min_length = 4
-	print 'validacion password'
-	print value
+	print ('validacion password')
 	if len(value) < min_length:
 		raise ValidationError(_('Password must be at least {0} characters '
 								'long.').format(min_length))	
