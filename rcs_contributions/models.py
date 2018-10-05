@@ -97,5 +97,6 @@ class ResultRCS (models.Model):
 	folio = models.CharField(max_length=100, null=False)
 	rcs = models.ForeignKey(RCS, related_name='rcs', null=True, on_delete=models.CASCADE)
 	path = models.CharField(max_length=100, null=False)
+	zip_file = models.CharField(max_length=200, null=False)
 	date_create = models.DateTimeField(default=timezone.now)
 	

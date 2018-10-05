@@ -51,3 +51,27 @@ def main(request):
 @login_required
 def success(request):
     return render(request, 'portal/success.html')
+
+
+
+def download_zip(request, id):
+    print ("in results contributions: " + str (id))
+    if request.method == 'POST':
+        us =  request.POST['username']
+        passw =  request.POST['password']
+        user = authenticate(username=us, password=passw)
+        if user is not None:
+            result = ResultRCSOpt.objects.get( pk = id)
+            zip_path = result.zip_file            
+            zip_file =  open(zip_path, 'rb')
+            response = HttpResponse(zip_file, content_type='application/zip')
+            response['Content-Disposition'] = 'attachment; filename=%s' % 'resultados.zip'
+            response['Content-Length'] = os.path.getsize(zip_path)
+            zip_file.close()
+            return response
+        else:
+            return render(request, 'rcs_optimization/login.html')
+
+    else:                
+        return render(request, 'rcs_optimization/login.html')
+

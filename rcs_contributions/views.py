@@ -63,14 +63,15 @@ def results(request):
 
 
 
-def download_zip(request):
-    print ("in results contributions")
+def download_zip(request, id):
+    print ("in results contributions: " + str (id))
     if request.method == 'POST':
         us =  request.POST['username']
         passw =  request.POST['password']
         user = authenticate(username=us, password=passw)
         if user is not None:
-            zip_path = settings.PATH_RESULTS + "out.zip"
+            result = ResultRCS.objects.get( pk = id)
+            zip_path = result.zip_file            
             zip_file =  open(zip_path, 'rb')
             response = HttpResponse(zip_file, content_type='application/zip')
             response['Content-Disposition'] = 'attachment; filename=%s' % 'resultados.zip'
@@ -78,7 +79,7 @@ def download_zip(request):
             zip_file.close()
             return response
         else:
-            return render(request, 'portal/login.html')
+            return render(request, 'rcs_contributions/login.html')
 
     else:                
-        return render(request, 'portal/login.html')
+        return render(request, 'rcs_contributions/login.html')

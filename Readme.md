@@ -3,23 +3,21 @@
 Proyecto de riesgos financieros
 
 ## Prerrequisitos
-- Python 2.7.13
+- Python 3.5
 - virtualenv
 - python-pip
 
 
 ## Configuración
 ```
-$ virtualenv .env
+$ virtualenv -p python3 .env
 $ source .env/bin/activate
 ```
 
 ## Instalación
 ### Dependencias
 ```
-$ pip install django
-$ pip install celery
-$ pip install django_celery_results
+$ pip install -r requirements.txt
 $ apt-get install -y erlang
 $ apt-get install rabbitmq-server
 

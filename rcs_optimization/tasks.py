@@ -19,11 +19,14 @@ def exe_analisis(param):
     today_date = datetime.date.today().strftime("%m/%d/%Y")                      
     result.folio = str (rcs_opt.id) + "-" + today_date
     result.rcs_opt = rcs_opt    
-    result.path = settings.MEDIA_ROOT + 'user_{0}/optimization/{1}'.format(rcs_sen.owner.username, "results") 
-    result.save()
-    out = zip_out(settings.MEDIA_ROOT + 'user_{0}/optimization/'.format(rcs_sen.owner.username) , result.path)
-    url_result =  "rcs_optimization/results"
+    result.path = settings.MEDIA_ROOT + 'user_{0}/optimization/{1}'.format(rcs_opt.owner.username, "results") 
+    out = zip_out(settings.MEDIA_ROOT + 'user_{0}/optimization/'.format(rcs_opt.owner.username) , result.path)
+    result.zip_file = out
+    result.save()    
+    url_result =  "rcs_optimization/results/{0}/".format(result.id)
     send_mail(param['email'], url_result)
+
+
 
 
 
