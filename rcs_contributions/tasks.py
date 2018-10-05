@@ -1,32 +1,30 @@
 from celery.decorators import task
 import time
 from rcs_contributions.middleware import *
-from rcs_contributions.messages_utils import *
+from financial_risk.utils import *
 from django.conf import settings
+from rcs_contributions.models import RCS, ResultRCS
+import datetime
 
 
 COMPLETA = 2
 ERROR = 3
-@task(name="sum_two_numbers")
-def add(x, y):
-	time.sleep(10)
-	#print 'in task'
-	for i in range (100):
-		x=i+x
-		y = i + y*i
-		#print i
-
-	return x + y
 
 
-@task(name="execute_task")
-def exe_calculate(rcs):
-	print ('Execute task')
-	
-	execute_rcs(rcs)
-	 
-	out = zip_out("", settings.PATH_FILES + "/ResultadosSalida")
-	send_mail(rcs['email'])
+@task(name="execute_rcs")
+def exe_analisis(param):
+    print ('Execute rcs')    
+    path_results = execute_rcs(param)     
+    result = ResultRCS()
+    rcs = RCS.objects.get( pk = param['id'])
+    today_date = datetime.date.today().strftime("%m/%d/%Y")                         
+    result.folio = str (rcs.id) + "-" + today_date
+    result.rcs = rcs
+    result.path = settings.MEDIA_ROOT + 'user_{0}/contributions/{1}'.format(rcs_sen.owner.username, "results") 
+    result.save()
+    out = zip_out(settings.MEDIA_ROOT + 'user_{0}/contributions/'.format(rcs_sen.owner.username) , result.path)
+    url_result =  "rcs_contributions/results"
+    send_mail(param['email'], url_result)
 
 
 

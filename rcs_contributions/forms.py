@@ -104,8 +104,4 @@ class RCSFormMin(forms.ModelForm):
 			"complementos":forms.CheckboxInput(attrs={ 'class':'filled-in'}),			
 		}
 
-		"""input_formats={
-
-			'fecha_corte': ['%d/%m/%Y','%m/%d/%Y']
-
-		}"""
+		

@@ -4,50 +4,50 @@ from __future__ import unicode_literals
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 #from rcs_contributions.middleware import *
-from rcs_contributions.models import *
-from rcs_contributions.forms import *
-from rcs_contributions.tasks import *
+from rcs_sensitivity.models import *
+from rcs_sensitivity.forms import *
+from rcs_sensitivity.tasks import *
+
 #from middleware import *
 from django.conf import settings
 from django.http import HttpResponse
 from django.contrib.auth import authenticate
 import datetime
 
+
 # Create your views here.
 @login_required
-def main(request):    
-    print( 'estoy en rcs')
+def main(request):  
+    print( 'estoy en rcs sentivity')
     user =request.user
+    print (user)
     if request.method == 'POST':
-        form_rcs = RCSForm(request.POST, request.FILES)        
-        print (request.POST['fecha_corte'])        
+        form_rcs = RCSSenForm(request.POST, request.FILES)     
+        print (form_rcs)
+        print (request.POST['fecha_corte']  )
         if form_rcs.is_valid():
-            print( 'RCS valido')
-            rcs=form_rcs.save(commit=False)
-            rcs.owner = user
+            
+            rcs_sen=form_rcs.save(commit=False)
+            rcs_sen.owner = user
             today_date = datetime.date.today().strftime("%m/%d/%Y") 
-            rcs.folio = str (user.id) + "-" + today_date
-            rcs.save()
-
-            print (rcs.fecha_corte)
-            print (rcs.sim)
+            rcs_sen.folio = str (user.id) + "-" + today_date
+            rcs_sen.save()
+            print (rcs_sen.fecha_corte)
+            
             paramRCS = {
-                        'id':rcs.id,
-                        'dir': settings.PATH_FILES, 
+                        'id':rcs_sen.id,
                         'fechacorte': '20170331', 
-                        'numEscenarios': str (rcs.numero_escenarios), 
-                        'costoCapital': str(rcs.costo_capital), 
-                        'inflacion': str(rcs.inflacion),
+                        'numEscenarios': str (rcs_sen.numero_escenarios),                         
                         'email': user.email}
                         
-            exe_analisis.delay(paramRCS)            
+            exe_analisis.delay(paramRCS)           
             return  render(request, 'portal/success.html')
         else:
             print ('datos invalidos')
-            return render(request, 'rcs_contributions/main.html', {'form': form_rcs})
-    else:        
-        form_rcs = RCSForm()
-        return render(request, 'rcs_contributions/main.html', {'form': form_rcs})
+            return render(request, 'rcs_sensitivity/main.html', {'form': form_rcs})
+    else:       
+        form_rcs = RCSSenForm()
+        return render(request, 'rcs_sensitivity/main.html', {'form': form_rcs})
 
 
 @login_required
@@ -55,22 +55,17 @@ def success(request):
     return render(request, 'portal/success.html')
 
 
-@login_required
-def results(request):
-    return render(request, 'portal/success.html')
 
-
-
-
-
-def download_zip(request):
-    print ("in results contributions")
+def download_zip(request, id):
+    print ("in results: " + str (id))
     if request.method == 'POST':
         us =  request.POST['username']
         passw =  request.POST['password']
         user = authenticate(username=us, password=passw)
+        print ('in post')
         if user is not None:
-            zip_path = settings.PATH_RESULTS + "out.zip"
+            result = ResultRCSSen.objects.get( pk = id)
+            zip_path = result.zip_file
             zip_file =  open(zip_path, 'rb')
             response = HttpResponse(zip_file, content_type='application/zip')
             response['Content-Disposition'] = 'attachment; filename=%s' % 'resultados.zip'
@@ -78,7 +73,8 @@ def download_zip(request):
             zip_file.close()
             return response
         else:
-            return render(request, 'portal/login.html')
+            return render(request, 'rcs_sensitivity/login.html')
 
     else:                
-        return render(request, 'portal/login.html')
+        return render(request, 'rcs_sensitivity/login.html')
+

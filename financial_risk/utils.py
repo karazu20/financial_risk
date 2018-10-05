@@ -24,7 +24,7 @@ password = 'cbi%1985'
 
 
 
-def send_mail (email):  
+def send_mail (email, result):  
     themsg = MIMEMultipart()
     themsg['Subject'] = 'Resultados de Riesgos financieros'
     themsg['To'] = email #", ".join(to_addr)
@@ -43,7 +43,7 @@ def send_mail (email):
                 
                 <br>
                     <p>
-                        < a href="%s">Resultados</href>
+                        <a href="%s">Resultados</href>
                     </p>
                 <br>
                 <p>
@@ -52,7 +52,7 @@ def send_mail (email):
                 
             </body>
         </html>
-    ''' % ("Ejecucion RCS", "http://127.0.0.1:8000/financial_risk/rcs_contributions/results")
+    ''' % ("Ejecucion de análisis", "http://127.0.0.1:8000/financial_risk/" + result)
 
     part1 = MIMEText(html, 'html', 'utf-8')
     themsg.attach(part1)    
@@ -66,5 +66,6 @@ def send_mail (email):
     print ('Email ok')
 
 def zip_out(path_out, path_in):
-    out = settings.PATH_RESULTS + "out"
+    out = path_out + "out"
     shutil.make_archive(out, 'zip', path_in)
+    return out + ".zip"

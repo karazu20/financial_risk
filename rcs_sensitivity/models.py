@@ -17,19 +17,18 @@ ESTATUS = {
 def user_directory_path(instance, filename):
     # file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
     print ( (instance, filename))
-    return 'user_{0}/optimization/{1}'.format(instance.owner.username, filename)
+    return 'user_{0}/sensitivity/{1}'.format(instance.owner.username, filename)
 
 
 
-
-class RCSOpt(models.Model):
+class RCSSen(models.Model):
     folio = models.CharField(max_length=100, null=False)
-    owner = models.ForeignKey(User, related_name='rcs_opt_owner', null=True, on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, related_name='rcs_sen_owner', null=True, on_delete=models.CASCADE)
     date_insert = models.DateTimeField(default=timezone.now)
     date_update = models.DateTimeField(default=timezone.now)
     date_init = models.DateTimeField(verbose_name='Fecha de inicio',  null=True)
     date_end = models.DateTimeField(verbose_name='Fecha de fin', null=True)
-    estatus = models.IntegerField(default=1, choices=ESTATUS)
+    estatus = models.IntegerField(default=1, choices=ESTATUS)    
     fecha_corte = models.DateTimeField(default=timezone.now)
     numero_escenarios = models.IntegerField(null=True)
 
@@ -46,8 +45,9 @@ class RCSOpt(models.Model):
     
     
 
-class ResultRCSOpt (models.Model):
+class ResultRCSSen (models.Model):
     folio = models.CharField(max_length=100, null=False)
-    rcs_opt = models.ForeignKey(RCSOpt, related_name='rcs', null=True, on_delete=models.CASCADE)
-    path = models.CharField(max_length=100, null=False)
+    rcs_sen = models.ForeignKey(RCSSen, related_name='rcs', null=True, on_delete=models.CASCADE)
+    path = models.CharField(max_length=200, null=False)
+    zip_file = models.CharField(max_length=200, null=False)
     date_create = models.DateTimeField(default=timezone.now)    

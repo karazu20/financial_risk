@@ -16,9 +16,7 @@ from django.urls import reverse_lazy
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-PATH_FILES = BASE_DIR +  "/charges_files"
-PATH_RESULTS = PATH_FILES + "/resultados/"
-print (PATH_FILES)
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
@@ -43,9 +41,9 @@ INSTALLED_APPS = [
     'django_celery_results',
     'portal',
     'rcs_contributions',
-    'rcs_optimization',
-    'stress_sensitivity',
-    #'rcs_sensitivity',
+    'rcs_optimization',    
+    #'stress_sensitivity',
+    'rcs_sensitivity',
 ]
 
 MIDDLEWARE = [
@@ -131,6 +129,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+MEDIA_ROOT =BASE_DIR + '/media/'
 
 
 LOGIN_URL = '/'
